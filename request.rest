@@ -1,0 +1,15 @@
+POST http://localhost:3333/api/entry
+Content-Type: application/json
+
+{
+  "plateVehicle":"ABC9997",
+  "entryData": "{{$datetime rfc1123}}"
+}
+###
+
+PUT http://localhost:3333/api/output
+Content-Type: application/json
+
+{
+  "outputData": "{{$datetime rfc1123}}"
+}
