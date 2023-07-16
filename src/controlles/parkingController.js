@@ -1,7 +1,7 @@
 const ParkingModel = require("../models/ParkingModel");
 
 const parkingController = {
-  entryVehicle: async(req, res) =>{
+  entryVehicle: async(req, res) => {
     try {
       const parking = {
         plateVehicle: req.body.plateVehicle,
@@ -14,7 +14,66 @@ const parkingController = {
     } catch (error) {
       console.log(error);      
     }
+  },
+  outputVehicle: async(req, res) => {
+    try {
+      const plateVehicle = req.params.plateVehicle;
+      const parking = {
+        outputData: req.body.outputData
+      }
+      const vehicle = await ParkingModel.findOne({plateVehicle: plateVehicle});
+      if (!vehicle) {
+        res.status(404).json(
+          {
+            plateVehicle: plateVehicle,
+            msg: "Vehicle not found"
+          }
+        );
+        return;
+      };
+      if (vehicle.outputData) {
+        res.status(406).json(
+          {
+            vehicle,
+            msg: "output already registered"
+          }
+        );
+        return;        
+      };
+      const response = await ParkingModel.findOneAndUpdate({plateVehicle: plateVehicle},parking)
+      res.status(200).json(response);
+    } catch (error) {
+      console.log(error);    
+    }
+    
+  },
+  allVehicle: async(req, res) => {
+    try {
+      const parking = await ParkingModel.find();
+      res.status(200).json(parking);
+    } catch (error) {
+      console.log(error); 
+    }
+  },
+  getVehicle: async(req, res) => {
+    try {
+      const plateVehicle = req.params.plateVehicle;
+      const parking = await ParkingModel.findOne({plateVehicle: plateVehicle});
+      if (!parking) {
+        res.status(404).json(
+          {
+            plateVehicle: plateVehicle,
+            msg: "Vehicle not found"
+          }
+        );
+        return;
+      }
+      res.status(200).json(parking);
+    } catch (error) {
+      console.log(error); 
+    }
   }
-};
+}
+
 
 module.exports = parkingController;
