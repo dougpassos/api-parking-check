@@ -1,15 +1,23 @@
-POST http://localhost:3333/api/entry
+POST http://localhost:3333/api/parking
 Content-Type: application/json
 
 {
-  "plateVehicle":"ABC9997",
+  "plateVehicle":"CBA1234",
   "entryData": "{{$datetime rfc1123}}"
 }
 ###
 
-PUT http://localhost:3333/api/output
+PATCH http://localhost:3333/api/parking/ABC9997
 Content-Type: application/json
 
 {
   "outputData": "{{$datetime rfc1123}}"
 }
+
+###
+GET http://localhost:3333/api/parking
+Content-Type: application/json
+
+###
+GET http://localhost:3333/api/parking/ABC9992
+Content-Type: application/json
