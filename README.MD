@@ -11,7 +11,9 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
 De que coisas você precisa para instalar o software e como instalá-lo?
 
 ```
-Dar exemplos
+Node.js
+VScode ou outro editor de codigo
+git
 ```
 
 ### 🔧 Instalação
@@ -40,9 +42,9 @@ Adicione notas adicionais sobre como implantar isso em um sistema ativo
 
 Mencione as ferramentas que você usou para criar seu projeto
 
-* [node.js](https://nodejs.org/en) - O framework web usado
-* [Maven](https://maven.apache.org/) - Gerente de Dependência
-* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
+* [node.js](https://nodejs.org/en) - Ambiente de execução JavaScript
+* [express](https://expressjs.com/) - O framework web para Node.js
+* [Mongoose](https://mongoosejs.com/) - modelagem  de objetos mongodb para node.js
 
 ## 🖇️ Colaborando
 
